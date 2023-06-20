@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Unity WebGL Player | onlyoneSystems</title>
-  <link rel="shortcut icon" href="TemplateData/favicon.ico">
-  <link rel="stylesheet" href="TemplateData/style.css">
-</head>
-
-<body>
-  <!-- ①モーション許可のボタン追加 -->
-  <button type="button" id="request_permission">モーションの許可</button><br>
-  <div id="unity-container" class="unity-desktop">
-    <canvas id="unity-canvas"></canvas>
-
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | onlyone</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+  </head>
+  <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600></canvas>
       <div id="unity-loading-bar">
@@ -27,21 +20,10 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">onlyoneSystems</div>
+        <div id="unity-build-title">onlyone</div>
       </div>
     </div>
     <script>
-      // ②ボタン押下時のアクションを追加
-      document.getElementById("request_permission").addEventListener("click", function () {
-        if (
-          DeviceOrientationEvent &&
-          DeviceOrientationEvent.requestPermission &&
-          typeof DeviceOrientationEvent.requestPermission === 'function'
-        ) {
-          DeviceOrientationEvent.requestPermission();
-        }
-      })
-
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -65,7 +47,7 @@
         if (type == 'error') div.style = 'background: red; padding: 10px;';
         else {
           if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-          setTimeout(function () {
+          setTimeout(function() {
             warningBanner.removeChild(div);
             updateBannerVisibility();
           }, 5000);
@@ -74,15 +56,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/onlyonetest.loader.js";
+      var loaderUrl = buildUrl + "/buildtest1.loader.js";
       var config = {
-        dataUrl: buildUrl + "/onlyonetest.data.unityweb",
-        frameworkUrl: buildUrl + "/onlyonetest.framework.js.unityweb",
-        codeUrl: buildUrl + "/onlyonetest.wasm.unityweb",
+        dataUrl: buildUrl + "/buildtest1.data.br",
+        frameworkUrl: buildUrl + "/buildtest1.framework.js.br",
+        codeUrl: buildUrl + "/buildtest1.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "onlyoneSystems",
-        productVersion: "0.1",
+        productName: "onlyone",
+        productVersion: "1.0",
         showBanner: unityShowBanner,
       };
 
@@ -132,13 +114,6 @@
         });
       };
       document.body.appendChild(script);
-
-      // ③モバイル端末でも全画面にならないようにif文を削除
-      canvas.style.width = "600px";
-      canvas.style.height = "900px";
-      loadingBar.style.display = "block";
-      
     </script>
-</body>
-
+  </body>
 </html>
